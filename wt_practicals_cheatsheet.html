@@ -1,0 +1,85 @@
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--copy:#238636;--copy-h:#2ea043;--copied:#1f6feb;--code-bg:#010409}
+.light{--bg:#ffffff;--surface:#f6f8fa;--border:#d0d7de;--text:#24292f;--text2:#57606a;--accent:#0969da;--copy:#1a7f37;--copy-h:#2da44e;--copied:#0969da;--code-bg:#161b22}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;padding:16px;transition:background .2s,color .2s}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.topbar h1{font-size:22px;font-weight:600;color:var(--text)}
+.tbtn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 16px;border-radius:6px;cursor:pointer;font-size:13px;transition:background .2s}
+.tbtn:hover{background:var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card-hdr{display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600;color:var(--text)}
+.cbtn{background:var(--copy);border:none;color:#fff;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;transition:background .2s;white-space:nowrap}
+.cbtn:hover{background:var(--copy-h)}
+.cbtn.ok{background:var(--copied)}
+.code-wrap{overflow:auto;background:var(--code-bg);border-radius:6px;padding:10px;max-height:260px}
+.code-wrap::-webkit-scrollbar{width:4px;height:4px}
+.code-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+pre{font-family:'Consolas','Courier New',monospace;font-size:11.5px;line-height:1.6;color:#c9d1d9;white-space:pre}
+.kw{color:#ff7b72;font-weight:600}.ty{color:#ffa657}.st{color:#a5d6ff}.cm{color:#8b949e}.nm{color:#79c0ff}.tg{color:#7ee787}.ph{color:#d2a8ff}
+</style>
+<div class="topbar">
+  <h1>Best of Luck — WT Practicals</h1>
+  <button class="tbtn" id="themeBtn" onclick="toggleTheme()">Light Mode</button>
+</div>
+<div class="grid" id="grid"></div>
+<script>
+const programs=[
+{title:"Practical No : 1",code:`<!DOCTYPE html>\n<html>\n<head>\n    <title>My Personal Details</title>\n</head>\n<body>\n\n    <h1><u>Personal Details</u></h1>\n\n    <p><b>Name:</b> Samarth keskar</p>\n    <p><strong>Age:</strong> 20</p>\n    <p><i>Course:</i> Computer Science</p>\n    <p><em>University:</em> SPPU University</p>\n    <p><u>Email:</u> sam@example.com</p>\n\n    <h2><b>About Me</b></h2>\n    <p>\n        I am a <strong>hardworking</strong> and <em>dedicated</em> student who loves\n        <i>programming</i> and <u>web development</u>.\n    </p>\n\n</body>\n</html>`},
+{title:"Practical No : 2",code:`<!DOCTYPE html>\n<html>\n<head>\n    <title>Image, Hyperlink and Nested Table</title>\n</head>\n<body>\n\n    <h1>Student Information</h1>\n\n    <img src="https://via.placeholder.com/200"\n         alt="Sample Image"\n         width="200"\n         height="200">\n\n    <br><br>\n\n    <a href="https://www.google.com" target="_blank">\n        Visit Google\n    </a>\n\n    <br><br>\n\n    <table border="1" cellpadding="10">\n        <tr>\n            <th>Name</th>\n            <th>Details</th>\n        </tr>\n        <tr>\n            <td>John</td>\n            <td>\n                <table border="1" cellpadding="5">\n                    <tr>\n                        <th>Subject</th>\n                        <th>Marks</th>\n                    </tr>\n                    <tr>\n                        <td>HTML</td>\n                        <td>85</td>\n                    </tr>\n                    <tr>\n                        <td>CSS</td>\n                        <td>90</td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n    </table>\n\n</body>\n</html>`},
+{title:"Practical No : 3",code:`<!DOCTYPE html>\n<html>\n<head>\n    <title>Registration Form</title>\n</head>\n<body>\n\n    <h1>Student Registration Form</h1>\n\n    <form>\n        <label>Name:</label>\n        <input type="text" name="name">\n\n        <br><br>\n\n        <label>Email:</label>\n        <input type="email" name="email">\n\n        <br><br>\n\n        <label>Gender:</label>\n        <input type="radio" name="gender" value="Male"> Male\n        <input type="radio" name="gender" value="Female"> Female\n\n        <br><br>\n\n        <label>Date of Birth:</label>\n        <input type="date" name="dob">\n\n        <br><br>\n\n        <input type="submit" value="Submit">\n    </form>\n\n</body>\n</html>`},
+{title:"Practical No : 4",code:`<!DOCTYPE html>\n<html>\n<head>\n    <title>CSS Example</title>\n    <style>\n        h1 { color: blue; text-align: center; }\n        table { width: 50%; border-collapse: collapse; }\n        th { background-color: lightgray; }\n        th, td { border: 1px solid black; padding: 10px; text-align: center; }\n    </style>\n    <link rel="stylesheet" href="style.css">\n</head>\n<body>\n    <h1 style="background-color: yellow;">\n        Student Details\n    </h1>\n    <table>\n        <tr><th>Name</th><th>Marks</th></tr>\n        <tr><td>John</td><td>85</td></tr>\n        <tr><td>Sam</td><td>90</td></tr>\n    </table>\n</body>\n</html>`},
+{title:"Practical No : 5",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <title>Responsive Bootstrap Page</title>\n  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">\n</head>\n<body>\n  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">\n    <div class="container">\n      <a class="navbar-brand" href="#">MySite</a>\n      <button class="navbar-toggler" type="button"\n        data-bs-toggle="collapse" data-bs-target="#mainNav">\n        <span class="navbar-toggler-icon"></span>\n      </button>\n      <div class="collapse navbar-collapse" id="mainNav">\n        <ul class="navbar-nav ms-auto">\n          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>\n          <li class="nav-item"><a class="nav-link" href="#">About</a></li>\n          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>\n          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  <section class="bg-light py-5">\n    <div class="container">\n      <div class="row align-items-center">\n        <div class="col-md-6">\n          <h1 class="display-5 fw-bold">Build Responsive Layouts Easily</h1>\n          <p class="lead">This page uses Bootstrap Grid.</p>\n          <a href="#" class="btn btn-primary btn-lg">Get Started</a>\n        </div>\n        <div class="col-md-6">\n          <img src="https://via.placeholder.com/600x400" class="img-fluid rounded" alt="Sample">\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"><\/script>\n</body>\n</html>`},
+{title:"Practical No : 6",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <title>Form Validation</title>\n  <style>\n    body { font-family: Arial, sans-serif; margin: 40px; }\n    form { max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }\n    input, button { width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box; }\n    .error { color: red; font-size: 14px; margin-top: 5px; }\n  </style>\n</head>\n<body>\n  <form id="myForm" onsubmit="return validateForm()">\n    <h2>Contact Form</h2>\n    <label for="fname">Name</label>\n    <input type="text" id="fname" />\n    <div id="nameError" class="error"></div>\n    <label for="femail">Email</label>\n    <input type="email" id="femail" />\n    <div id="emailError" class="error"></div>\n    <button type="submit">Submit</button>\n  </form>\n  <script>\n    function validateForm() {\n      let valid = true;\n      const name = document.getElementById("fname").value.trim();\n      const email = document.getElementById("femail").value.trim();\n      document.getElementById("nameError").textContent = "";\n      document.getElementById("emailError").textContent = "";\n      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n      if (name === "") {\n        document.getElementById("nameError").textContent = "Name cannot be empty.";\n        valid = false;\n      }\n      if (email === "" ) {\n        document.getElementById("emailError").textContent = "Email cannot be empty.";\n        valid = false;\n      } else if (!emailPattern.test(email)) {\n        document.getElementById("emailError").textContent = "Enter a valid email address.";\n        valid = false;\n      }\n      return valid;\n    }\n  <\/script>\n</body>\n</html>`},
+{title:"Practical No : 7",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <title>Dynamic Content with DOM</title>\n  <style>\n    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }\n    .box { max-width: 500px; background: white; padding: 20px; border-radius: 10px; }\n    button { padding: 10px 15px; margin-top: 10px; cursor: pointer; }\n    #message { margin-top: 20px; font-size: 18px; color: #2c3e50; }\n  </style>\n</head>\n<body>\n  <div class="box">\n    <h2>Dynamic Content Example</h2>\n    <button onclick="showMessage()">Show Message</button>\n    <button onclick="addItem()">Add Item</button>\n    <div id="message"></div>\n    <ul id="list"></ul>\n  </div>\n  <script>\n    function showMessage() {\n      document.getElementById("message").textContent =\n        "Hello! This content was added dynamically using JavaScript DOM.";\n    }\n    function addItem() {\n      const li = document.createElement("li");\n      li.textContent = "New item added at " + new Date().toLocaleTimeString();\n      document.getElementById("list").appendChild(li);\n    }\n  <\/script>\n</body>\n</html>`},
+{title:"Practical No : 8",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <title>Simple Calculator</title>\n</head>\n<body>\n  <h2>Simple Calculator</h2>\n  <script>\n    function add(a, b) { return a + b; }\n    function subtract(a, b) { return a - b; }\n    function multiply(a, b) { return a * b; }\n    function divide(a, b) {\n      if (b === 0) return "Cannot divide by zero";\n      return a / b;\n    }\n    function calculator() {\n      const num1 = parseFloat(prompt("Enter first number:"));\n      const operator = prompt("Enter operator (+, -, *, /):");\n      const num2 = parseFloat(prompt("Enter second number:"));\n      let result;\n      switch (operator) {\n        case "+": result = add(num1, num2); break;\n        case "-": result = subtract(num1, num2); break;\n        case "*": result = multiply(num1, num2); break;\n        case "/": result = divide(num1, num2); break;\n        default: result = "Invalid operator";\n      }\n      alert("Result: " + result);\n    }\n    calculator();\n  <\/script>\n</body>\n</html>`},
+{title:"Practical No : 9",code:`<?php\ndate_default_timezone_set("Asia/Kolkata");\necho "Welcome<br>";\necho "Current Date and Time: " . date("d-m-Y h:i:s A");\n?>`},
+{title:"Practical No : 10",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>PHP POST Form</title>\n</head>\n<body>\n  <h2>Simple Form</h2>\n  <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">\n    Name: <input type="text" name="name"><br><br>\n    Email: <input type="email" name="email"><br><br>\n    <input type="submit" name="submit" value="Submit">\n  </form>\n  <?php\n  if ($_SERVER["REQUEST_METHOD"] == "POST") {\n      $name  = htmlspecialchars($_POST["name"]);\n      $email = htmlspecialchars($_POST["email"]);\n      echo "<h3>Submitted Data:</h3>";\n      echo "Name: "  . $name  . "<br>";\n      echo "Email: " . $email . "<br>";\n  }\n  ?>\n</body>\n</html>`},
+{title:"Practical No : 11",code:`<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>String Manipulation</title>\n</head>\n<body>\n  <h2>PHP String Manipulation</h2>\n  <form method="post">\n    Enter String: <input type="text" name="text">\n    <input type="submit" value="Submit">\n  </form>\n  <?php\n  if ($_SERVER["REQUEST_METHOD"] == "POST") {\n      $text = $_POST["text"];\n      echo "<h3>Results:</h3>";\n      echo "Original String: "           . $text               . "<br>";\n      echo "Reversed String: "           . strrev($text)        . "<br>";\n      echo "Length of String: "          . strlen($text)        . "<br>";\n      echo "Substring (first 5 chars): " . substr($text, 0, 5)  . "<br>";\n  }\n  ?>\n</body>\n</html>`},
+{title:"Practical No : 12",code:`<?php\n// Indexed Array\necho "<h2>Indexed Array</h2>";\n$fruits = array("Apple", "Banana", "Orange", "Mango", "Grapes");\necho "<ul>";\nforeach ($fruits as $fruit) { echo "<li>$fruit</li>"; }\necho "</ul>";\n\n// Associative Array\necho "<h2>Associative Array</h2>";\n$student = array("name"=>"John","age"=>20,"course"=>"CS","grade"=>"A");\necho "<table border='1'>";\nforeach ($student as $key => $value) {\n    echo "<tr><th>$key</th><td>$value</td></tr>";\n}\necho "</table>";\n\n// Multidimensional Array\necho "<h2>Multidimensional Array</h2>";\n$employees = array(\n    array("name"=>"Alice","position"=>"Manager","salary"=>50000),\n    array("name"=>"Bob",  "position"=>"Developer","salary"=>40000)\n);\necho "<table border='1'><tr><th>Name</th><th>Position</th><th>Salary</th></tr>";\nforeach ($employees as $emp) {\n    echo "<tr><td>".$emp['name']."</td><td>".$emp['position']."</td><td>$".$emp['salary']."</td></tr>";\n}\necho "</table>";\n?>`}
+];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function highlight(code){
+  let s=esc(code);
+  const saved=[];
+  const stash=m=>{saved.push(m);return'\x00'+(saved.length-1)+'\x00'};
+  s=s.replace(/(\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g,m=>stash('<span class="cm">'+m+'</span>'));
+  s=s.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,m=>stash('<span class="st">'+m+'</span>'));
+  s=s.replace(/(&lt;\?php|&lt;\?|\?&gt;)/g,m=>stash('<span class="ph">'+m+'</span>'));
+  s=s.replace(/(&lt;\/?[a-zA-Z][a-zA-Z0-9-]*)/g,m=>stash('<span class="tg">'+m+'</span>'));
+  s=s.replace(/\b(function|var|let|const|if|else|return|switch|case|break|default|while|for|foreach|class|new|this|typeof|null|true|false|undefined|echo|print|isset|empty|array|include|require|date_default_timezone_set|date|strrev|strlen|substr|print_r|number_format|array_push|in_array|array_keys|array_merge|implode|sort|count|parseFloat|prompt|alert|document|getElementById|createElement|appendChild|textContent|toLocaleTimeString)\b/g,m=>stash('<span class="kw">'+m+'</span>'));
+  s=s.replace(/\b(\d+\.?\d*)\b/g,m=>stash('<span class="nm">'+m+'</span>'));
+  return s.replace(/\x00(\d+)\x00/g,(_,i)=>saved[+i]);
+}
+
+const grid=document.getElementById('grid');
+programs.forEach(p=>{
+  const card=document.createElement('div');card.className='card';
+  const hdr=document.createElement('div');hdr.className='card-hdr';
+  const title=document.createElement('div');title.className='card-title';title.textContent=p.title;
+  const btn=document.createElement('button');btn.className='cbtn';btn.textContent='Copy';
+  btn.onclick=()=>{
+    navigator.clipboard.writeText(p.code).then(()=>{
+      btn.textContent='Copied!';btn.classList.add('ok');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok')},1200);
+    });
+  };
+  hdr.append(title,btn);
+  const wrap=document.createElement('div');wrap.className='code-wrap';
+  wrap.innerHTML='<pre>'+highlight(p.code)+'</pre>';
+  card.append(hdr,wrap);
+  grid.appendChild(card);
+});
+
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent=
+    document.body.classList.contains('light')?'Dark Mode':'Light Mode';
+}
+</script>
